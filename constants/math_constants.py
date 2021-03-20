@@ -1,0 +1,5 @@
+K_LIM = 1.5
+X_R_FRONT = 76.4
+X_R_REAR = 72.4
+M = 4
+PSI = 0.2
