@@ -23,6 +23,13 @@ def get_dynamic_factor(_max, x_r):
     return _max / x_r
 
 
+def get_greater_k_limit(greater_than, k_limits_list):
+    _list = []
+    for item in k_limits_list:
+        _list.append(item - greater_than if item > greater_than else 0)
+    return _list
+
+
 def get_frame_torsion(front_right_force, rear_right_force, front_left_force, rear_left_force):
     return (front_right_force + rear_right_force) - (front_left_force + rear_left_force)
 

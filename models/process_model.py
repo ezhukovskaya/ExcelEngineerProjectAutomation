@@ -42,6 +42,7 @@ class ProcessModel:
         self.pressure = self.__get_pressure()
         self.time = self.__get_time()
         self.distance = self.__get_distance()
+        self.dynamics = self.__get_dynamics()
         self.accumulated_dynamic_factor = self.__get_accumulated_dynamic_factor()
 
     def __get_values(self):
@@ -49,7 +50,7 @@ class ProcessModel:
 
     def __get_accumulated_dynamic_factor(self):
         return mut.get_accumulated_dynamic_factor(self.__get_max(), self.__get_distance(),
-                                                  lut.get_index(self.__get_values() + 1, self.__get_max()))
+                                                  lut.get_index(self.__get_values(), self.__get_max()) + 1)
 
     def __get_mean(self):
         return mut.get_mean_value(self.__get_values())
