@@ -24,9 +24,11 @@ class ProcessModel:
     distance = 0.0
     dynamics = 0.0
     accumulated_dynamic_factor = 0.0
+    x_r = 0.0
     data = []
 
-    def __init__(self, file_path, my_tuple):
+    def __init__(self, file_path, my_tuple, x_r):
+        self.x_r = x_r
         self.data = get_data(file_path, my_tuple[0], my_tuple[1],
                              my_tuple[2], my_tuple[3], my_tuple[4])
         self.values = self.__get_values()
@@ -71,7 +73,7 @@ class ProcessModel:
         return self.data[5][2]
 
     def __get_dynamics(self):
-        return mut.get_dynamic_factor(self.__get_max(), current_const.X_R_FRONT)
+        return mut.get_dynamic_factor(self.__get_max(), self.x_r)
 
     def __get_pressure(self):
         return lut.find_value_tuple_in_the_list(self.data, self.__get_max(), 1)[1]
